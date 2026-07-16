@@ -35,7 +35,7 @@ export const JOURNEY = {
       endYear: 2026,
       isCurrent: true,
       description:
-        "Built an AI-powered SceneLine Generator Agent supporting image, audio, and natural language prompts. Engineered an end-to-end LLM pipeline and designed an agentic editing framework for Adobe Express integration.",
+        "Built AI-powered creative workflows using multimodal AI and LLMs for Adobe Express.",
     },
     {
       id: "salesforce-challenge",
@@ -57,18 +57,18 @@ export const JOURNEY = {
       startYear: 2024,
       isSingleMonth: true,
       description:
-        "Contributed to open source by integrating an interactive tour guide in the Doctalker project using Driver.js, enhancing user onboarding and navigation.",
+        "Implemented a guided onboarding system that streamlined first-time user navigation and improved feature discoverability in the Doctalker project.",
     },
     {
       id: "bobble-hackathon",
       type: "competition",
-      title: "2nd Place",
+      title: "First Runner Up",
       org: "Bobble AI Hackathon",
       startMonth: "Aug",
       startYear: 2024,
       isSingleMonth: true,
       description:
-        "Secured 2nd place by developing Kaal Decode, a web application that predicts sentence tenses from text, audio, images, and emojis, leveraging NLP and spaCy for precise linguistic analysis.",
+        "Built Kaal Decode, a multimodal AI application that predicts sentence tense from text, audio, images, and emojis.",
     },
     {
       id: "banasthali-btech",
@@ -81,7 +81,7 @@ export const JOURNEY = {
       endYear: 2027,
       isOngoing: true,
       description:
-        "Pursuing Computer Science Engineering with a CPI of 9.57/10. Core coursework in Data Structures & Algorithms, Database Management, and Object-Oriented Programming.",
+        "Pursuing a B.Tech in Computer Science with a CPI of 9.57/10, building a strong foundation in software engineering and AI.",
     },
   ] satisfies JourneyMilestone[],
 } as const;

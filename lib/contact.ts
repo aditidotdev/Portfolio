@@ -10,30 +10,30 @@ export type ContactLink = {
 export const CONTACT = {
   heading: "Let's Build",
   headingAccent: "Something Great",
-  email: "svaditi029@gmail.com",
+  email: "aditidotdev@gmail.com",
   location: "Based in India · Open to remote, hybrid & relocation",
   links: [
     {
       id: "email",
       label: "Email",
-      value: "svaditi029@gmail.com",
-      href: "mailto:svaditi029@gmail.com",
+      value: "aditidotdev@gmail.com",
+      href: "mailto:aditidotdev@gmail.com",
       icon: "email",
       accent: "#7f1d1d",
     },
     {
       id: "linkedin",
       label: "LinkedIn",
-      value: "linkedin.com/in/guptaadiiti",
-      href: "https://www.linkedin.com/in/guptaadiiti",
+      value: "linkedin.com/in/aditidotdev",
+      href: "https://www.linkedin.com/in/aditidotdev/",
       icon: "linkedin",
       accent: "#1e3a5f",
     },
     {
       id: "github",
       label: "GitHub",
-      value: "github.com/Adi-bv",
-      href: "https://github.com/Adi-bv",
+      value: "github.com/aditidotdev",
+      href: "https://github.com/aditidotdev",
       icon: "github",
       accent: "#27272a",
     },
@@ -41,6 +41,6 @@ export const CONTACT = {
   footer: {
     credit: "Designed & built by Aditi Gupta",
     githubLabel: "View on GitHub",
-    githubUrl: "https://github.com/Adi-bv",
+    githubUrl: "https://github.com/aditidotdev",
   },
 } as const;

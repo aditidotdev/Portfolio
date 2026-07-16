@@ -10,7 +10,7 @@ export type Project = {
 export const PROJECTS = {
   heading: "Things I've",
   headingAccent: "Built",
-  githubUrl: "https://github.com/Adi-bv",
+  githubUrl: "https://github.com/aditidotdev",
   moreCard: {
     heading: "Want to see more?",
     subtext: "Explore all of my projects and creations",
