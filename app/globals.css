@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --space-bg: #000000;
+  --accent-cyan: #22d3ee;
+  --accent-cyan-bright: #00d4ff;
+  --land-fill: #5eead4;
+  --accent-purple: #a855f7;
+  --text-primary: #f8fafc;
+  --text-muted: rgba(248, 250, 252, 0.7);
+  --background: var(--space-bg);
+  --foreground: var(--text-primary);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent-cyan);
+  --color-accent-bright: var(--accent-cyan-bright);
+  --font-sans: var(--font-roboto);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
   }
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  background: var(--space-bg);
+  color: var(--text-primary);
+  font-family: var(--font-roboto), system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+@media (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor__dot,
+.custom-cursor__ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+  opacity: 0;
+}
+
+.custom-cursor__dot--visible,
+.custom-cursor__ring--visible {
+  opacity: 1;
+}
+
+.custom-cursor__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: var(--accent-cyan);
+  z-index: 10000;
+}
+
+.custom-cursor__ring {
+  width: 28px;
+  height: 28px;
+  border-radius: 9999px;
+  border: 1.5px solid #ffffff;
+  background: transparent;
+}
+
+.journey-accent-line {
+  background: var(--accent-cyan);
+  opacity: 0.4;
+}
+
+.journey-timeline-line {
+  background: var(--accent-cyan);
+}
+
+.content-section {
+  min-height: 100dvh;
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
+  scroll-margin-top: 4.5rem;
+}
+
+@media (min-width: 768px) {
+  .content-section {
+    padding-top: 5.5rem;
+    padding-bottom: 7rem;
+    scroll-margin-top: 5.5rem;
+  }
 }
