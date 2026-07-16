@@ -15,7 +15,7 @@ function ProjectTextBlock({ project }: ProjectCardProps) {
     <div className="shrink-0">
       <div className="flex flex-col gap-4">
         <div className="flex items-start justify-between gap-6">
-          <span className="text-7xl font-bold leading-none text-white md:text-8xl">
+          <span className="text-7xl font-bold leading-none text-white md:text-8xl font-[family-name:var(--font-space-grotesk)]">
             {formatIndex(project.index)}
           </span>
 

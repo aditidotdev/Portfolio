@@ -18,7 +18,7 @@ export function ProjectImagePlaceholder({
         className="pointer-events-none absolute inset-0 opacity-20"
         style={{ backgroundColor: accent }}
       />
-      <p className="relative z-10 px-6 text-center text-xl font-semibold tracking-wide text-white md:text-2xl">
+      <p className="relative z-10 px-6 text-center text-xl font-semibold tracking-wide text-white md:text-2xl font-[family-name:var(--font-space-grotesk)]">
         {title}
       </p>
     </div>

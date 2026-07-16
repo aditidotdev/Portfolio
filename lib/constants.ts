@@ -2,7 +2,7 @@ export const SITE = {
   name: "Aditi Gupta",
   eyebrow: "Hello, I'm",
   tagline:
-    "Developer who builds things that work — LLM agents, NLP pipelines, and full-stack apps, end to end.",
+    "Developer building intelligent products with AI and full-stack engineering.",
   description:
     "Aditi Gupta — developer building AI agents, NLP tools, and full-stack apps.",
 } as const;
@@ -11,9 +11,8 @@ export const ABOUT = {
   heading: "About",
   headingAccent: "Me",
   paragraphs: [
-    "I'm a Product Intern at Adobe right now, working on the SceneLine Generator Agent — an AI tool that takes image, audio, and natural language prompts and turns them into structured video plans. I've been building the LLM pipeline and an agentic editing framework that plugs into Adobe Express.",
-    "B.Tech in Computer Science at Banasthali Vidyapeeth, CPI 9.57. I spend most of my time on DSA, system design, and shipping projects — CommandPilot turns natural language into Linux commands (cut search time by ~80%), and Kaal Decode predicts sentence tense across 15+ languages with ~90% accuracy.",
-    "Competitive programmer at heart. I care about clean architecture, measurable impact, and code that doesn't need a paragraph of fluff to explain what it does.",
+    "I enjoy building software that solves real problems. Over the past few years, I've worked on AI applications, full-stack projects, and developer tools, with a focus on creating products that are both useful and reliable. During my internship at Adobe, I worked on multimodal AI and LLM-powered creative workflows, building systems that transformed images, audio, and natural language into structured, editable video plans.",
+    "Outside of work, I enjoy building projects, participating in hackathons, contributing to open source, and sharpening my problem-solving skills through competitive programming. I'm always looking for opportunities to learn, build, and create software that makes an impact.",
   ],
 } as const;
 
