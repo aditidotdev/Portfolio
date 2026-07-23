@@ -9,10 +9,6 @@ type UseProjectsScrollOptions = {
   reducedMotion: boolean | null;
 };
 
-type UseProjectsScrollResult = {
-  maxOffset: number;
-};
-
 function clamp(value: number, min: number, max: number): number {
   return Math.max(min, Math.min(max, value));
 }
@@ -36,7 +32,7 @@ export function useProjectsScroll({
   stickyRef,
   railRef,
   reducedMotion,
-}: UseProjectsScrollOptions): UseProjectsScrollResult {
+}: UseProjectsScrollOptions): void {
   const maxOffsetRef = useRef(0);
   const rafId = useRef<number | null>(null);
 
@@ -120,8 +116,4 @@ export function useProjectsScroll({
       track.style.height = "";
     };
   }, [trackRef, stickyRef, railRef, reducedMotion, updateScroll, scheduleUpdate]);
-
-  return {
-    maxOffset: maxOffsetRef.current,
-  };
 }

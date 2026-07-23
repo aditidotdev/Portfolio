@@ -5,6 +5,8 @@ export type Project = {
   category: string;
   tools: string[];
   imageAccent: string;
+  image?: string;
+  description: string;
 };
 
 export const PROJECTS = {
@@ -22,8 +24,11 @@ export const PROJECTS = {
       index: 1,
       title: "CommandPilot",
       category: "CLI / AI",
-      tools: ["Node.js", "Google Generative AI", "Bash", "CLI"],
+      tools: ["Node.js", "Bash", "Google Generative AI API", "JavaScript",],
       imageAccent: "#22d3ee",
+      image: "/images/projects/commandpilot.jpeg",
+      description:
+        "An AI-powered CLI tool that generates accurate Linux commands instantly using natural language and AI.",
     },
     {
       id: "kaal-decode",
@@ -31,14 +36,12 @@ export const PROJECTS = {
       title: "Kaal Decode",
       category: "NLP",
       tools: [
-        "Python",
-        "Flask",
-        "spaCy",
-        "Google Translate API",
-        "OCR",
-        "Speech-to-Text",
+        "Python", "Flask", "spaCy", "Google Translate API", "OCR", "Speech-to-Text API",
       ],
       imageAccent: "#a855f7",
+      image: "/images/projects/kaal-decode.jpeg",
+      description:
+        "A multimodal AI application that identifies tense from text, speech, and images.",
     },
     {
       id: "churn-prediction",
@@ -46,28 +49,29 @@ export const PROJECTS = {
       title: "Customer Churn Prediction",
       category: "ML",
       tools: [
-        "Python",
-        "scikit-learn",
-        "Flask",
-        "Random Forest",
-        "Pandas",
+        "Python", "scikit-learn", "pandas", "NumPy", "matplotlib", "seaborn", "Flask", "joblib",
       ],
       imageAccent: "#34d399",
+      image: "/images/projects/churn-prediction.jpeg",
+      description:
+        "An end-to-end machine learning application for predicting customer churn in real time.",
     },
     {
-      id: "nebula-ui",
+      id: "invoice-generator",
       index: 4,
-      title: "Nebula UI",
-      category: "Design System",
+      title: "Invoice Generator",
+      category: "Full Stack",
       tools: [
-        "React",
-        "TypeScript",
-        "Storybook",
-        "Tailwind",
-        "Figma",
-        "Radix UI",
+        "React.js",
+        "Node.js",
+        "Express.js",
+        "MongoDB",
+        "JWT",
       ],
       imageAccent: "#f472b6",
+      image: "/images/projects/invoice-generator.jpeg",
+      description:
+        "A full-stack invoice management platform with secure authentication and dynamic invoice generation.",
     },
   ] satisfies Project[],
 } as const;

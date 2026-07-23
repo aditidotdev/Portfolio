@@ -33,20 +33,20 @@ export function AboutProfileAvatar() {
             aria-hidden
           >
             <Image
-              src="/images/demo-profile.jpg"
+              src="/images/profile.png"
               alt=""
               fill
-              className="rounded-full object-cover"
+              className="rounded-full object-contain"
               sizes="(max-width: 768px) 240px, 288px"
             />
           </div>
 
           <div className="absolute inset-0">
             <Image
-              src="/images/demo-profile.jpg"
+              src="/images/profile.png"
               alt="Profile photo"
               fill
-              className="rounded-full object-cover"
+              className="rounded-full object-contain"
               sizes="(max-width: 768px) 240px, 288px"
             />
           </div>

@@ -2,7 +2,7 @@ export const SITE = {
   name: "Aditi Gupta",
   eyebrow: "Hello, I'm",
   tagline:
-    "Developer building intelligent products with AI and full-stack engineering.",
+    "I build products where AI meets thoughtful engineering, transforming ideas into experiences people genuinely enjoy using.",
   description:
     "Aditi Gupta — developer building AI agents, NLP tools, and full-stack apps.",
 } as const;
@@ -11,8 +11,8 @@ export const ABOUT = {
   heading: "About",
   headingAccent: "Me",
   paragraphs: [
-    "I enjoy building software that solves real problems. Over the past few years, I've worked on AI applications, full-stack projects, and developer tools, with a focus on creating products that are both useful and reliable. During my internship at Adobe, I worked on multimodal AI and LLM-powered creative workflows, building systems that transformed images, audio, and natural language into structured, editable video plans.",
-    "Outside of work, I enjoy building projects, participating in hackathons, contributing to open source, and sharpening my problem-solving skills through competitive programming. I'm always looking for opportunities to learn, build, and create software that makes an impact.",
+    "I've always enjoyed building things, not just because I like coding, but because I like turning ideas into products people can actually use. Over the years, I've worked on AI applications, full-stack products, and developer tools. During my internship at Adobe, I built multimodal AI and LLM-powered creative workflows that transformed images, audio, and natural language into structured, editable video plans.",
+    "Outside of work, you'll usually find me building side projects, participating in hackathons, contributing to open source, or solving problems through competitive programming. I'm driven by curiosity and enjoy creating software that's thoughtful, reliable, and genuinely useful.",
   ],
 } as const;
 
@@ -27,7 +27,7 @@ export const NAV_ITEMS = [
 
 export const RESUME = {
   label: "Resume",
-  href: "#",
+  href: "https://drive.google.com/file/d/1aISij4zkPyVrIFaI5fDA4c-VL6Sm239L/view?usp=drivesdk",
 } as const;
 
 export const HERO_CTAS = [
@@ -47,7 +47,7 @@ export const ANIMATION = {
 export const GLOBE = {
   radiusDesktop: 0.85,
   radiusMobile: 0.8,
-  positionDesktop: [0.85, 0, 0] as const,
+  positionDesktop: [1.4, 0, 0] as const,
   positionMobile: [0, -0.15, 0] as const,
   initialRotation: [0.1, -0.5, 0] as const,
   cameraPositionDesktop: [-0.15, 0, 6] as const,

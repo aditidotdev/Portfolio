@@ -13,7 +13,7 @@ function ProjectsHeader() {
     <SectionHeader
       heading={PROJECTS.heading}
       headingAccent={PROJECTS.headingAccent}
-      className="mx-auto mb-16 max-w-6xl px-8 text-center md:mb-20 md:px-16 lg:px-24"
+      className="mx-auto mb-10 max-w-6xl px-8 text-center md:mb-14 md:px-16 lg:px-24"
     />
   );
 }
@@ -31,7 +31,7 @@ function ProjectsReducedMotionList() {
       ))}
 
       <div className="flex min-h-80 items-center justify-center rounded-sm border border-white/10 bg-black/40 p-8 md:min-h-96 md:p-12">
-        <GitHubMoreCard index={PROJECTS.items.length + 1} compact />
+        <GitHubMoreCard compact />
       </div>
     </div>
   );
@@ -66,7 +66,7 @@ function ProjectsHorizontalScroll({ reducedMotion }: { reducedMotion: boolean | 
           {PROJECTS.items.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
-          <GitHubMoreCard index={PROJECTS.items.length + 1} />
+          <GitHubMoreCard />
         </div>
       </div>
     </div>

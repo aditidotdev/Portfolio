@@ -1,26 +1,41 @@
+import Image from "next/image";
+
 type ProjectImagePlaceholderProps = {
   title: string;
   accent: string;
+  image?: string;
+  imageFit?: "cover" | "contain";
 };
 
 export function ProjectImagePlaceholder({
   title,
   accent,
+  image,
+  imageFit = "cover",
 }: ProjectImagePlaceholderProps) {
   return (
     <div
-      className="relative flex aspect-[16/10] w-full max-w-md items-center justify-center overflow-hidden rounded-sm border border-white/10 bg-[#0a0a0a]"
-      style={{
-        borderColor: `color-mix(in srgb, ${accent} 40%, transparent)`,
-      }}
+      className="relative flex aspect-video w-full max-w-md items-center justify-center overflow-hidden rounded-sm bg-[#0a0a0a]"
     >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-20"
-        style={{ backgroundColor: accent }}
-      />
-      <p className="relative z-10 px-6 text-center text-xl font-semibold tracking-wide text-white md:text-2xl font-[family-name:var(--font-space-grotesk)]">
-        {title}
-      </p>
+      {image ? (
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className={imageFit === "contain" ? "object-contain" : "object-cover"}
+          sizes="(max-width: 768px) 100vw, 448px"
+        />
+      ) : (
+        <>
+          <div
+            className="pointer-events-none absolute inset-0 opacity-20"
+            style={{ backgroundColor: accent }}
+          />
+          <p className="relative z-10 px-6 text-center text-xl font-semibold tracking-wide text-white md:text-2xl font-[family-name:var(--font-space-grotesk)]">
+            {title}
+          </p>
+        </>
+      )}
     </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { JOURNEY } from "@/lib/journey";
 import { JourneyTimelineItem } from "./JourneyTimelineItem";
@@ -9,9 +9,6 @@ import { useViewportTimelineScroll } from "./useViewportTimelineScroll";
 export function JourneyTimeline() {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
-  const refCallbacks = useRef(
-    new Map<number, (el: HTMLLIElement | null) => void>(),
-  );
   const [itemCenterYs, setItemCenterYs] = useState<number[]>([]);
   const reducedMotion = useReducedMotion();
   const milestoneCount = JOURNEY.milestones.length;
@@ -28,17 +25,13 @@ export function JourneyTimeline() {
     onCentersMeasured: handleCentersMeasured,
   });
 
-  const getItemRef = useCallback(
-    (index: number) => {
-      if (!refCallbacks.current.has(index)) {
-        refCallbacks.current.set(index, (el) => {
-          itemRefs.current[index] = el;
-          if (el) requestAnimationFrame(remeasure);
-        });
-      }
-      return refCallbacks.current.get(index)!;
-    },
-    [remeasure],
+  const itemRefCallbacks = useMemo(
+    () =>
+      Array.from({ length: milestoneCount }, (_, index) => (el: HTMLLIElement | null) => {
+        itemRefs.current[index] = el;
+        if (el) requestAnimationFrame(remeasure);
+      }),
+    [milestoneCount, remeasure],
   );
 
   return (
@@ -71,7 +64,7 @@ export function JourneyTimeline() {
         {JOURNEY.milestones.map((milestone, index) => (
           <JourneyTimelineItem
             key={milestone.id}
-            ref={getItemRef(index)}
+            ref={itemRefCallbacks[index]}
             milestone={milestone}
             index={index}
             lineHeight={lineHeight}

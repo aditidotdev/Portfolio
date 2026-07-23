@@ -6,30 +6,19 @@ import { CONTACT } from "@/lib/contact";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { ConnectLinkCard } from "./ConnectLinkCard";
-
-const contentVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1] as const,
-      delay: 0.15,
-    },
-  },
-};
-
-const staticContentVariants = {
-  hidden: { opacity: 1, y: 0 },
-  show: { opacity: 1, y: 0 },
-};
+import {
+  fadeUpItem,
+  staggerContainer,
+  staticFadeUpItem,
+  staticStaggerContainer,
+} from "@/lib/motionVariants";
 
 export function ConnectSection() {
   const reducedMotion = useReducedMotion();
   const contentMotionVariants = reducedMotion
-    ? staticContentVariants
-    : contentVariants;
+    ? staticStaggerContainer
+    : staggerContainer(0.1, 0.15);
+  const itemVariants = reducedMotion ? staticFadeUpItem : fadeUpItem;
 
   return (
     <section
@@ -49,22 +38,27 @@ export function ConnectSection() {
           viewport={{ once: true, margin: "-60px" }}
           className="mt-8 flex flex-col items-center md:mt-10"
         >
-          <Button href={`mailto:${CONTACT.email}`} variant="primary">
-            <HiOutlineMail className="mr-2 h-4 w-4" aria-hidden="true" />
-            Send me an email
-          </Button>
+          <motion.div variants={itemVariants}>
+            <Button href={`mailto:${CONTACT.email}`} variant="primary">
+              <HiOutlineMail className="mr-2 h-4 w-4" aria-hidden="true" />
+              Send me an email
+            </Button>
+          </motion.div>
 
-          <p className="mt-6 flex items-center gap-2 text-sm text-white">
+          <motion.p
+            variants={itemVariants}
+            className="mt-6 flex items-center gap-2 text-sm text-white"
+          >
             <HiOutlineLocationMarker
               className="h-4 w-4 shrink-0"
               aria-hidden="true"
             />
             {CONTACT.location}
-          </p>
+          </motion.p>
 
           <div className="mt-8 grid w-full max-w-4xl grid-cols-1 gap-4 sm:grid-cols-3">
             {CONTACT.links.map((link) => (
-              <ConnectLinkCard key={link.id} link={link} />
+              <ConnectLinkCard key={link.id} link={link} variants={itemVariants} />
             ))}
           </div>
         </motion.div>

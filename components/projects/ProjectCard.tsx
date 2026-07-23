@@ -31,10 +31,10 @@ function ProjectTextBlock({ project }: ProjectCardProps) {
 
         <div>
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-white">
-            Tools and features
+            {project.tools.join(", ")}
           </p>
           <p className="text-sm leading-relaxed text-white md:text-base">
-            {project.tools.join(", ")}
+            {project.description}
           </p>
         </div>
       </div>
@@ -48,6 +48,8 @@ function ProjectImageWrapper({ project }: ProjectCardProps) {
       <ProjectImagePlaceholder
         title={project.title}
         accent={project.imageAccent}
+        image={project.image}
+        imageFit={project.id === "churn-prediction" ? "contain" : "cover"}
       />
     </div>
   );

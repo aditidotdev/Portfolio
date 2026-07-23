@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { JOURNEY } from "@/lib/journey";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { JourneyTimeline } from "./JourneyTimeline";

@@ -1,41 +1,39 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { ABOUT } from "@/lib/constants";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { AboutProfileAvatar } from "./AboutProfileAvatar";
+import {
+  fadeUpItem,
+  fadeUpItemCompact,
+  REVEAL_EASE,
+  staggerContainer,
+  staticFadeUpItem,
+  staticFadeUpItemCompact,
+  staticStaggerContainer,
+} from "@/lib/motionVariants";
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.1 },
-  },
-};
-
-const item = {
+const textBlockVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
+    transition: {
+      duration: 0.7,
+      ease: REVEAL_EASE,
+      staggerChildren: 0.15,
+      delayChildren: 0.05,
+    },
   },
-};
-
-const staticContainer = {
-  hidden: { opacity: 1 },
-  show: { opacity: 1 },
-};
-
-const staticItem = {
-  hidden: { opacity: 1, y: 0 },
-  show: { opacity: 1, y: 0 },
 };
 
 export function AboutSection() {
   const reducedMotion = useReducedMotion();
-  const variants = reducedMotion ? staticContainer : container;
-  const childVariants = reducedMotion ? staticItem : item;
+  const variants = reducedMotion ? staticStaggerContainer : staggerContainer(0.12, 0.1);
+  const childVariants = reducedMotion ? staticFadeUpItem : fadeUpItem;
+  const paragraphVariants = reducedMotion ? staticFadeUpItemCompact : fadeUpItemCompact;
+  const nestedTextVariants = reducedMotion ? staticStaggerContainer : textBlockVariants;
 
   return (
     <section id="about" className="content-section relative">
@@ -59,15 +57,19 @@ export function AboutSection() {
             <AboutProfileAvatar />
           </motion.div>
 
-          <motion.div variants={childVariants} className="md:w-[62%] md:pl-4">
+          <motion.div
+            variants={nestedTextVariants}
+            className="md:w-[62%] md:pl-4"
+          >
             <div className="space-y-4">
               {ABOUT.paragraphs.map((paragraph, i) => (
-                <p
+                <motion.p
                   key={i}
+                  variants={paragraphVariants}
                   className="text-base leading-relaxed text-white md:text-lg"
                 >
                   {paragraph}
-                </p>
+                </motion.p>
               ))}
             </div>
           </motion.div>

@@ -4,28 +4,25 @@ import { motion, useReducedMotion } from "framer-motion";
 import { TECH_STACK, splitIntoRows } from "@/lib/techStack";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { TechStackCard } from "./TechStackCard";
+import {
+  fadeUpItemCompact,
+  staggerContainer,
+  staticFadeUpItemCompact,
+  staticStaggerContainer,
+} from "@/lib/motionVariants";
 
-const gridVariants = {
-  hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.22, 1, 0.36, 1] as const,
-      delay: 0.15,
-    },
-  },
-};
-
-const staticGridVariants = {
-  hidden: { opacity: 1, y: 0 },
-  show: { opacity: 1, y: 0 },
-};
+const TECH_STAGGER_BUDGET = 0.6;
+const TECH_STAGGER_STEP = Math.min(
+  0.035,
+  TECH_STAGGER_BUDGET / TECH_STACK.items.length,
+);
 
 export function TechStackSection() {
   const reducedMotion = useReducedMotion();
-  const gridMotionVariants = reducedMotion ? staticGridVariants : gridVariants;
+  const gridMotionVariants = reducedMotion
+    ? staticStaggerContainer
+    : staggerContainer(TECH_STAGGER_STEP, 0.1);
+  const cardVariants = reducedMotion ? staticFadeUpItemCompact : fadeUpItemCompact;
   const rows = splitIntoRows(TECH_STACK.items, TECH_STACK.rowSizes);
 
   return (
@@ -45,7 +42,7 @@ export function TechStackSection() {
           {/* Mobile: simple 3-column grid */}
           <div className="grid grid-cols-3 place-items-center gap-3 md:hidden">
             {TECH_STACK.items.map((item) => (
-              <TechStackCard key={item.id} item={item} />
+              <TechStackCard key={item.id} item={item} variants={cardVariants} />
             ))}
           </div>
 
@@ -57,7 +54,7 @@ export function TechStackSection() {
                 className="flex flex-wrap justify-center gap-3 md:gap-5"
               >
                 {row.map((item) => (
-                  <TechStackCard key={item.id} item={item} />
+                  <TechStackCard key={item.id} item={item} variants={cardVariants} />
                 ))}
               </div>
             ))}

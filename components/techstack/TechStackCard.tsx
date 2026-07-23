@@ -1,13 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import type { TechStackItem } from "@/lib/techStack";
 
 type TechStackCardProps = {
   item: TechStackItem;
+  variants: Variants;
 };
 
-export function TechStackCard({ item }: TechStackCardProps) {
+export function TechStackCard({ item, variants }: TechStackCardProps) {
   const Icon = item.icon;
 
   return (
@@ -16,6 +17,7 @@ export function TechStackCard({ item }: TechStackCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`Learn more about ${item.name}`}
+      variants={variants}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.98 }}
       className="group block rounded-xl border border-[var(--accent-cyan)]"

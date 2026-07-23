@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { PROJECTS } from "@/lib/projects";
 
 type GitHubMoreCardProps = {
-  index: number;
   compact?: boolean;
 };
 

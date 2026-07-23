@@ -45,7 +45,9 @@ export function useViewportTimelineScroll({
   const containerHeightRef = useRef(0);
   const rafId = useRef<number | null>(null);
   const onCentersMeasuredRef = useRef(onCentersMeasured);
-  onCentersMeasuredRef.current = onCentersMeasured;
+  useLayoutEffect(() => {
+    onCentersMeasuredRef.current = onCentersMeasured;
+  }, [onCentersMeasured]);
 
   const measureCenters = useCallback(() => {
     const container = containerRef.current;

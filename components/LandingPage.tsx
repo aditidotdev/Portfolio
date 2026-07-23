@@ -41,8 +41,8 @@ export function LandingPage() {
         <div className="pointer-events-none absolute inset-0 z-[1] bg-black/30" />
 
         <main className="relative z-10 flex min-h-dvh w-full items-center justify-center">
-          <div className="mx-auto grid min-h-dvh w-full max-w-6xl items-center px-8 md:px-16 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-20 lg:px-24">
-            <div className="rounded-2xl bg-black/25 p-6 backdrop-blur-sm lg:mr-4 lg:p-8">
+          <div className="mx-auto grid min-h-dvh w-full max-w-6xl items-center px-8 md:px-16 lg:grid-cols-2 lg:gap-20 lg:px-24">
+            <div className="rounded-2xl bg-black/25 p-6 backdrop-blur-sm lg:p-8">
               <HeroSection />
             </div>
             <div className="hidden min-h-[400px] lg:block" aria-hidden="true" />

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import {
   useMotionValue,
   useTransform,
@@ -30,7 +30,9 @@ export function useMilestoneReveal({
   const staticScale = useMotionValue(1);
 
   const centerYRef = useRef(centerY);
-  centerYRef.current = centerY;
+  useLayoutEffect(() => {
+    centerYRef.current = centerY;
+  }, [centerY]);
 
   const reveal = useTransform(lineHeight, (height) =>
     computeReveal(height, centerYRef.current),
