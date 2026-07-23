@@ -17,7 +17,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: `${SITE.name} | Portfolio`,
+  title: SITE.name,
   description: SITE.description,
 };
 
