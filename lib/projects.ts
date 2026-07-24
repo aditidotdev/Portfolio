@@ -21,8 +21,22 @@ export const PROJECTS = {
   },
   items: [
     {
-      id: "commandpilot",
+      id: "know2flow",
       index: 1,
+      title: "Know2Flow",
+      category: "AI / Full Stack",
+      tools: [
+        "React.js", "Node.js", "Firebase", "Socket.IO", "Agora SDK", "Pinecone", "Gemini API",
+      ],
+      imageAccent: "#fbbf24",
+      image: "/images/projects/know2flow.png",
+      imageUrl: "https://github.com/aditidotdev/Know2Flow",
+      description:
+        "An AI-powered skill exchange platform that connects learners through semantic skill matching,\nreal-time collaboration, and personalized learning experiences.",
+    },
+    {
+      id: "commandpilot",
+      index: 2,
       title: "CommandPilot",
       category: "CLI / AI",
       tools: ["Node.js", "Bash", "Google Generative AI API", "JavaScript",],
@@ -34,7 +48,7 @@ export const PROJECTS = {
     },
     {
       id: "kaal-decode",
-      index: 2,
+      index: 3,
       title: "Kaal Decode",
       category: "NLP",
       tools: [
@@ -48,7 +62,7 @@ export const PROJECTS = {
     },
     {
       id: "churn-prediction",
-      index: 3,
+      index: 4,
       title: "Customer Churn Prediction",
       category: "ML",
       tools: [
@@ -63,7 +77,7 @@ export const PROJECTS = {
     },
     {
       id: "invoice-generator",
-      index: 4,
+      index: 5,
       title: "Invoice Generator",
       category: "Full Stack",
       tools: [

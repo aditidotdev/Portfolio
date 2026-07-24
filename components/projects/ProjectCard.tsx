@@ -33,7 +33,7 @@ function ProjectTextBlock({ project }: ProjectCardProps) {
           <p className="mb-3 text-xs font-medium uppercase tracking-[0.25em] text-white">
             {project.tools.join(", ")}
           </p>
-          <p className="text-sm leading-relaxed text-white md:text-base">
+          <p className="whitespace-pre-line text-sm leading-relaxed text-white md:text-base">
             {project.description}
           </p>
         </div>

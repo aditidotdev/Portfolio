@@ -27,7 +27,7 @@ export const NAV_ITEMS = [
 
 export const RESUME = {
   label: "Resume",
-  href: "https://drive.google.com/file/d/1amSq5yB4Ny_CIuy7Qi4vZDbXKAjZTZcz/view?usp=drivesdk",
+  href: "https://drive.google.com/file/d/1apiPmLkXepNBmMs6Sjv-udp8dikvJdYr/view?usp=drivesdk",
 } as const;
 
 export const BLOG: {
