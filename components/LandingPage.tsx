@@ -32,7 +32,7 @@ export function LandingPage() {
       {/* 1. Intro (globe) */}
       <section
         id="home"
-        className="relative min-h-dvh scroll-mt-[4.5rem] overflow-hidden md:scroll-mt-[5.5rem]"
+        className="relative min-h-dvh scroll-mt-4 overflow-hidden md:scroll-mt-8"
       >
         <div className="pointer-events-none absolute inset-0 z-0">
           <SceneCanvas />

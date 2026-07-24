@@ -22,7 +22,7 @@ export function SectionHeader({
       variants={variants}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={{ once: false, margin: "-80px" }}
       className={className}
     >
       <h2 className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">

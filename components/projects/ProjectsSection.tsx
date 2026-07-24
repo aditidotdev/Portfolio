@@ -52,7 +52,7 @@ function ProjectsHorizontalScroll({ reducedMotion }: { reducedMotion: boolean | 
     <div ref={trackRef} className="relative">
       <div
         ref={stickyRef}
-        className="sticky top-[7rem] md:top-[8rem] flex min-h-[80vh] flex-col overflow-hidden"
+        className="sticky top-[4.5rem] md:top-24 flex min-h-[80vh] flex-col overflow-hidden"
       >
         <ProjectsHeader />
         <div
@@ -82,7 +82,7 @@ export function ProjectsSection() {
       className={
         reducedMotion
           ? "content-section relative"
-          : "relative scroll-mt-[7rem] md:scroll-mt-[8rem]"
+          : "relative scroll-mt-4 md:scroll-mt-8"
       }
     >
       {reducedMotion ? (

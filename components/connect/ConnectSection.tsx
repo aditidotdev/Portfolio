@@ -23,7 +23,7 @@ export function ConnectSection() {
   return (
     <section
       id="contact"
-      className="relative scroll-mt-[4.5rem] pt-[4.5rem] pb-56 md:scroll-mt-[5.5rem] md:pt-[5.5rem] md:pb-60"
+      className="relative scroll-mt-4 pt-14 pb-56 md:scroll-mt-8 md:pt-16 md:pb-60"
     >
       <div className="relative z-10 mx-auto max-w-6xl px-8 md:px-16 lg:px-24">
         <SectionHeader
@@ -35,7 +35,7 @@ export function ConnectSection() {
           variants={contentMotionVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: false, margin: "-60px" }}
           className="mt-8 flex flex-col items-center md:mt-10"
         >
           <motion.div variants={itemVariants}>

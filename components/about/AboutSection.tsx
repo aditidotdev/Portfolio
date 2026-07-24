@@ -47,7 +47,7 @@ export function AboutSection() {
           variants={variants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-80px" }}
+          viewport={{ once: false, margin: "-80px" }}
           className="flex flex-col items-center gap-16 md:flex-row md:items-center md:gap-24 lg:gap-32"
         >
           <motion.div

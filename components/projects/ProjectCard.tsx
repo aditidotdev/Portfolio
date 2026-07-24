@@ -43,14 +43,30 @@ function ProjectTextBlock({ project }: ProjectCardProps) {
 }
 
 function ProjectImageWrapper({ project }: ProjectCardProps) {
+  const image = (
+    <ProjectImagePlaceholder
+      title={project.title}
+      accent={project.imageAccent}
+      image={project.image}
+      imageFit={project.id === "churn-prediction" ? "contain" : "cover"}
+    />
+  );
+
   return (
     <div className="flex shrink-0 justify-center">
-      <ProjectImagePlaceholder
-        title={project.title}
-        accent={project.imageAccent}
-        image={project.image}
-        imageFit={project.id === "churn-prediction" ? "contain" : "cover"}
-      />
+      {project.imageUrl ? (
+        <a
+          href={project.imageUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${project.title} on GitHub`}
+          className="block w-full max-w-md cursor-pointer transition-opacity hover:opacity-85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300"
+        >
+          {image}
+        </a>
+      ) : (
+        image
+      )}
     </div>
   );
 }

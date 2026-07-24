@@ -6,6 +6,7 @@ export type Project = {
   tools: string[];
   imageAccent: string;
   image?: string;
+  imageUrl?: string;
   description: string;
 };
 
@@ -27,6 +28,7 @@ export const PROJECTS = {
       tools: ["Node.js", "Bash", "Google Generative AI API", "JavaScript",],
       imageAccent: "#22d3ee",
       image: "/images/projects/commandpilot.jpeg",
+      imageUrl: "https://github.com/aditidotdev/CommandPilot-",
       description:
         "An AI-powered CLI tool that generates accurate Linux commands instantly using natural language and AI.",
     },
@@ -40,6 +42,7 @@ export const PROJECTS = {
       ],
       imageAccent: "#a855f7",
       image: "/images/projects/kaal-decode.jpeg",
+      imageUrl: "https://kaal-decode-1.onrender.com/",
       description:
         "A multimodal AI application that identifies tense from text, speech, and images.",
     },
@@ -53,6 +56,8 @@ export const PROJECTS = {
       ],
       imageAccent: "#34d399",
       image: "/images/projects/churn-prediction.jpeg",
+      imageUrl:
+        "https://github.com/aditidotdev/Customer_Churn_Prediction_System",
       description:
         "An end-to-end machine learning application for predicting customer churn in real time.",
     },
@@ -70,6 +75,7 @@ export const PROJECTS = {
       ],
       imageAccent: "#f472b6",
       image: "/images/projects/invoice-generator.jpeg",
+      imageUrl: "https://invoice-generator-rho-neon.vercel.app/",
       description:
         "A full-stack invoice management platform with secure authentication and dynamic invoice generation.",
     },

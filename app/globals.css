@@ -99,15 +99,15 @@ h6 {
 
 .content-section {
   min-height: 100dvh;
-  padding-top: 4.5rem;
+  padding-top: 3.5rem;
   padding-bottom: 5rem;
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 1rem;
 }
 
 @media (min-width: 768px) {
   .content-section {
-    padding-top: 5.5rem;
+    padding-top: 4rem;
     padding-bottom: 7rem;
-    scroll-margin-top: 5.5rem;
+    scroll-margin-top: 2rem;
   }
 }

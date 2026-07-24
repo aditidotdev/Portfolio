@@ -26,7 +26,10 @@ export function TechStackSection() {
   const rows = splitIntoRows(TECH_STACK.items, TECH_STACK.rowSizes);
 
   return (
-    <section id="techstack" className="content-section relative">
+    <section
+      id="techstack"
+      className="content-section relative !scroll-mt-4 !pt-14 md:!scroll-mt-8 md:!pt-16"
+    >
       <div className="relative z-10 mx-auto max-w-6xl px-8 md:px-16 lg:px-24">
         <SectionHeader
           heading={TECH_STACK.heading}
@@ -37,7 +40,7 @@ export function TechStackSection() {
           variants={gridMotionVariants}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
+          viewport={{ once: false, margin: "-60px" }}
         >
           {/* Mobile: simple 3-column grid */}
           <div className="grid grid-cols-3 place-items-center gap-3 md:hidden">
