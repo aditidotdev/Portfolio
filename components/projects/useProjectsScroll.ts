@@ -34,9 +34,33 @@ export function useProjectsScroll({
   reducedMotion,
 }: UseProjectsScrollOptions): void {
   const maxOffsetRef = useRef(0);
+  const stickyHeightRef = useRef(0);
+  const stickyTopRef = useRef(0);
   const rafId = useRef<number | null>(null);
+  const measureRafId = useRef<number | null>(null);
 
-  const updateScroll = useCallback(() => {
+  // Runs on every scroll-driven frame. Only reads track.getBoundingClientRect()
+  // (via getScrollProgress) and writes rail.style.transform — no layout-dirtying
+  // write happens beforehand, so this read stays cheap and never forces a
+  // synchronous reflow. This is what keeps scroll frames light on mobile.
+  const applyTransform = useCallback(() => {
+    const track = trackRef.current;
+    const rail = railRef.current;
+    if (!track || !rail) return;
+
+    const progress = getScrollProgress(
+      track,
+      stickyHeightRef.current,
+      stickyTopRef.current,
+    );
+    const translateX = -maxOffsetRef.current * progress;
+    rail.style.transform = `translate3d(${translateX}px, 0, 0)`;
+  }, [trackRef, railRef]);
+
+  // Runs only on mount/resize/content-size change. Does the expensive
+  // read-write-read work (including the track.style.height write) and caches
+  // the results so applyTransform never needs to touch them on scroll.
+  const measure = useCallback(() => {
     const track = trackRef.current;
     const sticky = stickyRef.current;
     const rail = railRef.current;
@@ -44,30 +68,42 @@ export function useProjectsScroll({
 
     const stickyHeight = sticky.offsetHeight;
     const maxOffset = Math.max(0, rail.scrollWidth - window.innerWidth);
-    const horizontalScrollDistance = maxOffset;
-    const trackHeight = stickyHeight + horizontalScrollDistance;
+    const trackHeight = stickyHeight + maxOffset;
 
     track.style.height = `${trackHeight}px`;
-    maxOffsetRef.current = maxOffset;
 
     const stickyTop = parseFloat(getComputedStyle(sticky).top) || 0;
-    const progress = getScrollProgress(track, stickyHeight, stickyTop);
-    const translateX = -maxOffset * progress;
-    rail.style.transform = `translate3d(${translateX}px, 0, 0)`;
-  }, [trackRef, stickyRef, railRef]);
 
-  const scheduleUpdate = useCallback(() => {
+    stickyHeightRef.current = stickyHeight;
+    maxOffsetRef.current = maxOffset;
+    stickyTopRef.current = stickyTop;
+
+    applyTransform();
+  }, [trackRef, stickyRef, railRef, applyTransform]);
+
+  const scheduleApply = useCallback(() => {
     if (rafId.current !== null) return;
 
     rafId.current = requestAnimationFrame(() => {
       rafId.current = null;
-      updateScroll();
+      applyTransform();
     });
-  }, [updateScroll]);
+  }, [applyTransform]);
+
+  const scheduleMeasure = useCallback(() => {
+    if (measureRafId.current !== null) return;
+
+    measureRafId.current = requestAnimationFrame(() => {
+      measureRafId.current = null;
+      measure();
+    });
+  }, [measure]);
 
   useLayoutEffect(() => {
     if (reducedMotion) {
       maxOffsetRef.current = 0;
+      stickyHeightRef.current = 0;
+      stickyTopRef.current = 0;
       if (railRef.current) {
         railRef.current.style.transform = "";
       }
@@ -82,26 +118,22 @@ export function useProjectsScroll({
     const rail = railRef.current;
     if (!track || !sticky || !rail) return;
 
-    const measureAndUpdate = () => {
-      updateScroll();
-    };
-
     let initRaf1 = 0;
     let initRaf2 = 0;
     initRaf1 = requestAnimationFrame(() => {
-      initRaf2 = requestAnimationFrame(measureAndUpdate);
+      initRaf2 = requestAnimationFrame(measure);
     });
 
-    const resizeObserver = new ResizeObserver(scheduleUpdate);
+    const resizeObserver = new ResizeObserver(scheduleMeasure);
     resizeObserver.observe(sticky);
     resizeObserver.observe(rail);
     resizeObserver.observe(track);
 
-    document.addEventListener("scroll", scheduleUpdate, {
+    document.addEventListener("scroll", scheduleApply, {
       passive: true,
       capture: true,
     });
-    window.addEventListener("resize", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleMeasure, { passive: true });
 
     return () => {
       cancelAnimationFrame(initRaf1);
@@ -109,11 +141,14 @@ export function useProjectsScroll({
       if (rafId.current !== null) {
         cancelAnimationFrame(rafId.current);
       }
+      if (measureRafId.current !== null) {
+        cancelAnimationFrame(measureRafId.current);
+      }
       resizeObserver.disconnect();
-      document.removeEventListener("scroll", scheduleUpdate, { capture: true });
-      window.removeEventListener("resize", scheduleUpdate);
+      document.removeEventListener("scroll", scheduleApply, { capture: true });
+      window.removeEventListener("resize", scheduleMeasure);
       rail.style.transform = "";
       track.style.height = "";
     };
-  }, [trackRef, stickyRef, railRef, reducedMotion, updateScroll, scheduleUpdate]);
+  }, [trackRef, stickyRef, railRef, reducedMotion, measure, scheduleMeasure, scheduleApply]);
 }

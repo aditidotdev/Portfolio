@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { HiMenu, HiX } from "react-icons/hi";
-import { NAV_ITEMS, RESUME, SITE } from "@/lib/constants";
+import { BLOG, NAV_ITEMS, RESUME, SITE } from "@/lib/constants";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { useScrollToSection } from "@/hooks/useScrollToSection";
 import { Button } from "@/components/ui/Button";
@@ -39,6 +39,27 @@ function NavLink({ label, href, isActive, onNavigate, className = "" }: NavLinkP
     >
       {label}
     </a>
+  );
+}
+
+function BlogButton({ className = "" }: { className?: string }) {
+  const buttonClassName = `!rounded-lg !border-white/30 !px-4 !py-2 text-xs md:text-sm whitespace-nowrap ${className}`;
+
+  if (BLOG.href) {
+    return (
+      <Button href={BLOG.href} variant="secondary" className={buttonClassName}>
+        {BLOG.label}
+      </Button>
+    );
+  }
+
+  return (
+    <span
+      aria-disabled="true"
+      className={`inline-flex items-center justify-center rounded-lg border border-white/30 px-4 py-2 text-xs font-medium tracking-wide text-white md:text-sm ${className}`}
+    >
+      {BLOG.label}
+    </span>
   );
 }
 
@@ -106,6 +127,8 @@ export function Navbar() {
           </ul>
 
           <div className="flex shrink-0 items-center gap-2 md:gap-3">
+            <BlogButton className="hidden md:inline-flex" />
+
             <Button
               href={RESUME.href}
               variant="primary"
@@ -149,6 +172,9 @@ export function Navbar() {
                     />
                   </li>
                 ))}
+                <li className="mt-2 border-t border-white/10 pt-3">
+                  <BlogButton className="w-full" />
+                </li>
               </ul>
             </motion.div>
           )}

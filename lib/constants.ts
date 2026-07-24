@@ -27,8 +27,16 @@ export const NAV_ITEMS = [
 
 export const RESUME = {
   label: "Resume",
-  href: "https://drive.google.com/file/d/1aISij4zkPyVrIFaI5fDA4c-VL6Sm239L/view?usp=drivesdk",
+  href: "https://drive.google.com/file/d/1amSq5yB4Ny_CIuy7Qi4vZDbXKAjZTZcz/view?usp=drivesdk",
 } as const;
+
+export const BLOG: {
+  label: string;
+  href: string | null;
+} = {
+  label: "Writing ↗",
+  href: "https://medium.com/@svaditi029/f83bd82ad9f0",
+};
 
 export const HERO_CTAS = [
   { label: "View Work", href: "#projects", variant: "primary" as const },
