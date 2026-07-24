@@ -34,14 +34,14 @@ export function LandingPage() {
         id="home"
         className="relative min-h-dvh scroll-mt-4 overflow-hidden md:scroll-mt-8"
       >
-        <div className="pointer-events-none absolute inset-0 z-0">
+        <div className="pointer-events-none absolute inset-x-0 top-12 z-0 h-[38dvh] overflow-hidden sm:h-[42dvh] lg:inset-0 lg:h-auto">
           <SceneCanvas />
         </div>
 
         <div className="pointer-events-none absolute inset-0 z-[1] bg-black/30" />
 
-        <main className="relative z-10 flex min-h-dvh w-full items-center justify-center">
-          <div className="mx-auto grid min-h-dvh w-full max-w-6xl items-center px-8 md:px-16 lg:grid-cols-2 lg:gap-20 lg:px-24">
+        <main className="relative z-10 flex min-h-dvh w-full items-end justify-center px-8 pb-8 pt-[42dvh] sm:pt-[46dvh] md:px-16 lg:items-center lg:p-0">
+          <div className="mx-auto grid w-full max-w-6xl items-center lg:min-h-dvh lg:grid-cols-2 lg:gap-20 lg:px-24">
             <div className="rounded-2xl bg-black/25 p-6 backdrop-blur-sm lg:p-8">
               <HeroSection />
             </div>

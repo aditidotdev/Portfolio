@@ -127,8 +127,6 @@ export function Navbar() {
           </ul>
 
           <div className="flex shrink-0 items-center gap-2 md:gap-3">
-            <BlogButton className="hidden md:inline-flex" />
-
             <Button
               href={RESUME.href}
               variant="primary"
